@@ -1,5 +1,8 @@
-package nz.sqsite.auto.ui.browser;
+package nz.sqsite.auto.ui.commands;
 
+import nz.sqsite.auto.ui.browser.Browser;
+import nz.sqsite.auto.ui.browser.BrowserTypes;
+import nz.sqsite.auto.ui.browser.Driver;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,7 +15,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class OpenTest {
+public class OpenCloseTest {
 
     private Browser browser;
 
