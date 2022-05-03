@@ -8,9 +8,9 @@ You can download the dependency from maven
 
 ``` maven
 <dependency>
-  <groupId>....</groupId>
-  <artifactId>...</artifactId>
-  <version>....</version>
+   <groupId>io.github.sqsite</groupId>
+   <artifactId>auto.browser</artifactId>
+   <version>0.0.1</version>
 </dependency>
 ```
 
