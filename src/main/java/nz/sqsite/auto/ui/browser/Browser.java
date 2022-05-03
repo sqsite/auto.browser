@@ -1,11 +1,19 @@
 package nz.sqsite.auto.ui.browser;
 
+import nz.sqsite.auto.ui.data.DataCleaner;
 import nz.sqsite.auto.ui.data.WaitTime;
-import nz.sqsite.auto.ui.exceptions.SetUpException;
+import nz.sqsite.auto.ui.supplier.ObjectSupplier;
+import nz.sqsite.auto.ui.tabsandwindows.Tabs;
+import nz.sqsite.auto.ui.tabsandwindows.Windows;
+import nz.sqsite.auto.ui.wait.Activity;
 import org.openqa.selenium.remote.AbstractDriverOptions;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
+import static nz.sqsite.auto.ui.data.GlobalData.addData;
 import static nz.sqsite.auto.ui.data.WaitTimeData.setWaitTime;
 
 public class Browser {
@@ -13,13 +21,20 @@ public class Browser {
     private String browserType;
     private AbstractDriverOptions<?> options;
     private Duration explicitWait;
-    private Duration implicitWait;
 
+    private final HashMap<Activity, Boolean> activityMap = new HashMap<>();
     private final Driver driver = new Driver();
 
 
     public void close() {
-        driver.close();
+        try {
+            driver.close();
+        } finally {
+            Tabs.remove();
+            Windows.remove();
+            ObjectSupplier.flushInstances();
+            DataCleaner.cleanData();
+        }
     }
 
 
@@ -33,15 +48,17 @@ public class Browser {
         return this;
     }
 
-    public Browser explicitWaitTime(Duration explicitWait) {
+    public Browser withWaitTime(Duration explicitWait) {
         this.explicitWait = explicitWait;
         return this;
     }
 
-    private Browser implicitWaitTime(Duration explicitWait) {
-        this.explicitWait = explicitWait;
+    public Browser pageBackGroundActivity(Activity activity, boolean enable){
+        activityMap.put(activity, enable);
         return this;
     }
+
+
 
     public Browser withOptions(AbstractDriverOptions<?> options) {
         this.options = options;
@@ -49,12 +66,12 @@ public class Browser {
     }
 
     public void open(String url) {
-        if (explicitWait != null && implicitWait != null) {
-            throw new SetUpException("Both explicit and implicit waits should not be set at the same time");
-        }
-
         if(explicitWait != null){
             setWaitTime(WaitTime.DEFAULT_WAIT_TIME, String.valueOf(explicitWait.toMillis()));
+        }
+
+        if(!activityMap.isEmpty()){
+            activityMap.forEach((k, v) -> addData(k.getActivityType(), String.valueOf(v)));
         }
         driver.create(browserType, options).navigateTo(url);
     }

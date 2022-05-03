@@ -2,7 +2,6 @@ package nz.sqsite.auto.ui.propertieshandler;
 
 
 import nz.sqsite.auto.ui.encryptor.Decryptor;
-import nz.sqsite.auto.ui.exceptions.PendingException;
 import nz.sqsite.auto.ui.exceptions.PropertyHandlerException;
 
 import java.util.Properties;

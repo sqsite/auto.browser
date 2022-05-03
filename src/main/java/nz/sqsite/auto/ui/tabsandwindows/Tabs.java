@@ -2,11 +2,26 @@ package nz.sqsite.auto.ui.tabsandwindows;
 
 
 import nz.sqsite.auto.ui.browser.Driver;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
 
 import java.util.ArrayList;
 import java.util.function.Supplier;
 
 public class Tabs {
+
+    /***
+     * Opens a new tab with the given url.
+     * It will switch to the newly opened window by assuming that it is the last window opened.
+     * If that is not the case, it is required to switch manually to the correct tab using switchToTab() methods.
+     * @param url To navigate to, passed a string.
+     */
+    public static void openNewTab(String url) {
+        WebDriver driver = Driver.getDriver();
+        driver.switchTo().newWindow(WindowType.TAB);
+        switchToTab(last);
+        driver.navigate().to(url);
+    }
 
     /**
      * Switches to the first tab with index starting from left
