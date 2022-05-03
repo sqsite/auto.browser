@@ -1,6 +1,7 @@
 package nz.sqsite.auto.ui.propertieshandler;
 
 
+import nz.sqsite.auto.ui.encryptor.Decryptor;
 import nz.sqsite.auto.ui.exceptions.PendingException;
 import nz.sqsite.auto.ui.exceptions.PropertyHandlerException;
 
@@ -38,8 +39,7 @@ public class PropertiesFinder {
         configProperties = getConfigProperties();
 
         if (!isNullOrEmpty(configProperties.getProperty(key)) && configProperties.getProperty(key).startsWith("ENC(")) {
-            throw new PendingException("Decryption work needs to be finished");
-//            return Decryptor.decrypt(getSecretKey(), configProperties.getProperty(key));
+            return Decryptor.decrypt(getSecretKey(), configProperties.getProperty(key));
         } else if (!isNullOrEmpty(configProperties.getProperty(key))) {
             return configProperties.getProperty(key);
         }
@@ -47,8 +47,7 @@ public class PropertiesFinder {
         envProperties = getEnvProperties();
 
         if (!isNullOrEmpty(envProperties.getProperty(key)) && envProperties.getProperty(key).startsWith("ENC(")) {
-            throw new PendingException("Decryption work needs to be finished");
-//            return Decryptor.decrypt(getSecretKey(), envProperties.getProperty(key));
+            return Decryptor.decrypt(getSecretKey(), envProperties.getProperty(key));
         }
 
         return envProperties.getProperty(key);
