@@ -61,9 +61,9 @@ public class ReportBuilder {
 
 
     /**
-     * Method to create the report if the retry option is not enabled. </br>
-     * This method needs to be run as part of the global hook (@AfterTest) of the TestNgRunner file. </br>
-     * It will work only if the j-unit report is created. So make sure that - </br>
+     * Method to create the report if the retry option is not enabled. <br>
+     * This method needs to be run as part of the global hook (@AfterTest) of the TestNgRunner file. <br>
+     * It will work only if the j-unit report is created. So make sure that - <br>
      * this method is called only after calling {@link ResultParser#parseRunnerResult()}
      */
     public static void createRunnerReport() {
