@@ -102,8 +102,6 @@ public class FindWebElement extends IFrameHandler {
             waitForPageLoad(driver, backgroundActivityWait);
         }
 
-        log.elementsLog("Searching for elements " + elemLocator);
-
         switchToIframeOfElement(elemLocator, driver, visibility);
 
         List<WebElement> elements = wait.until(d -> d.findElements(elemLocator));

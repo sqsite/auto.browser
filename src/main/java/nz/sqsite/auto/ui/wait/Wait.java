@@ -100,8 +100,9 @@ public class Wait {
         return Integer.parseInt(getWaitTime(WaitTime.POLLING_INTERVAL));
     }
 
-    private static void removeWait() {
+    public static void removeWait() {
         wait.remove();
+        backgroundWait.remove();
     }
 
 }
