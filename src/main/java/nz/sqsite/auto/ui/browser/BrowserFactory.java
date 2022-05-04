@@ -31,4 +31,9 @@ public class BrowserFactory {
                 return new Chrome().getDriver((ChromeOptions) options);
         }
     }
+
+    public WebDriver getBrowser() {
+        return getBrowser(null, null);
+    }
+
 }

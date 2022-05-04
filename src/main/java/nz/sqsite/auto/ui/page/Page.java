@@ -1,4 +1,4 @@
-package nz.sqsite.auto.ui.tabsandwindows;
+package nz.sqsite.auto.ui.page;
 
 import nz.sqsite.auto.ui.browser.Driver;
 import nz.sqsite.auto.ui.loggers.Logger;
@@ -18,22 +18,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class WebDomActions {
+public class Page {
 
-    private static final Logger logger = new Logger().forClass(WebDomActions.class);
+    private static final Logger logger = new Logger().forClass(Page.class);
 
-    private WebDomActions() {
+    private Page() {
+    }
+
+    public static void navigateTo(String url){
+        Driver.getDriver().navigate().to(url);
     }
 
     public static void refresh() {
         Driver.getDriver().navigate().refresh();
     }
 
-    public static String getTitle() {
+    public static String title() {
         return Driver.getDriver().getTitle();
     }
 
-    public static String getCurrentUrl() {
+    public static String currentUrl() {
         return Driver.getDriver().getCurrentUrl();
     }
 
