@@ -44,7 +44,7 @@ class IFrameHandler extends LoggerUtil {
             elementFound = false;
         }
 
-        List<WebElement> iframes = driver.findElements(By.tagName("iframe"));
+        List<WebElement> iframes = driver.findElements(By.xpath("//iframe"));
         List<WebElement> innerFrames;
 
         logger.iframeLog("Total iframes found from default content: " + iframes.size());
@@ -86,7 +86,7 @@ class IFrameHandler extends LoggerUtil {
                 elementFound = false;
             }
 
-            innerFrames = driver.findElements(By.tagName("iframe"));
+            innerFrames = driver.findElements(By.xpath("//iframe"));
             logger.iframeLog("Total iframes found from baseIframe: " + innerFrames.size());
 
             for (WebElement firstLayerFrame : innerFrames) {
@@ -118,7 +118,7 @@ class IFrameHandler extends LoggerUtil {
                         elementFound = false;
                     }
 
-                    innerFrames = driver.findElements(By.tagName("iframe"));
+                    innerFrames = driver.findElements(By.xpath("//iframe"));
                     logger.iframeLog("Total iframes found from second layer: " + innerFrames.size());
 
                     for (WebElement secondLayerFrame : innerFrames) {
@@ -149,7 +149,7 @@ class IFrameHandler extends LoggerUtil {
                                 elementFound = false;
                             }
 
-                            innerFrames = driver.findElements(By.tagName("iframe"));
+                            innerFrames = driver.findElements(By.xpath("//iframe"));
                             logger.iframeLog("Total iframes found from third layer: " + innerFrames.size());
 
                             for (WebElement thirdLayerFrame : innerFrames) {
@@ -180,7 +180,7 @@ class IFrameHandler extends LoggerUtil {
                                         elementFound = false;
                                     }
 
-                                    innerFrames = driver.findElements(By.tagName("iframe"));
+                                    innerFrames = driver.findElements(By.xpath("//iframe"));
                                     logger.iframeLog("Total iframes found fourth layer: " + innerFrames.size());
 
                                     for (WebElement fourthLayerFrame : innerFrames) {
@@ -210,7 +210,7 @@ class IFrameHandler extends LoggerUtil {
                                                 elementFound = false;
                                             }
 
-                                            innerFrames = driver.findElements(By.tagName("iframe"));
+                                            innerFrames = driver.findElements(By.xpath("//iframe"));
                                             logger.iframeLog("Total iframes found from fifth layer: " + innerFrames.size());
 
                                             for (WebElement fifthLayerFrame : innerFrames) {
@@ -241,7 +241,7 @@ class IFrameHandler extends LoggerUtil {
                                                         elementFound = false;
                                                     }
 
-                                                    innerFrames = driver.findElements(By.tagName("iframe"));
+                                                    innerFrames = driver.findElements(By.xpath("//iframe"));
                                                     logger.iframeLog("Total iframes found from sixth layer: " + innerFrames.size());
 
                                                     for (WebElement sixthLayerFrame : innerFrames) {
@@ -271,7 +271,7 @@ class IFrameHandler extends LoggerUtil {
                                                                 logger.iframeLog("Element not found using " + locator + " from frame sixth layer");
                                                                 elementFound = false;
                                                             }
-                                                            innerFrames = driver.findElements(By.tagName("iframe"));
+                                                            innerFrames = driver.findElements(By.xpath("//iframe"));
                                                             logger.iframeLog("Total iframes found from sixth layer: " + innerFrames.size());
 
                                                             for (WebElement seventhLayerFrame : innerFrames) {
