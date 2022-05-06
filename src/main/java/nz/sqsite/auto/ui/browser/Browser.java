@@ -1,70 +1,46 @@
 package nz.sqsite.auto.ui.browser;
 
-import nz.sqsite.auto.ui.data.DataCleaner;
-import nz.sqsite.auto.ui.data.WaitTime;
 import nz.sqsite.auto.ui.wait.Activity;
 import org.openqa.selenium.remote.AbstractDriverOptions;
 
 import java.time.Duration;
-import java.util.HashMap;
-
-import static nz.sqsite.auto.ui.data.GlobalData.addData;
-import static nz.sqsite.auto.ui.data.WaitTimeData.setWaitTime;
 
 public class Browser {
+    private static final ThreadLocal<BrowserConfig> browserConfig = ThreadLocal.withInitial(BrowserConfig::new);
 
-    private String browserType;
-    private AbstractDriverOptions<?> options;
-    private Duration explicitWait;
-
-    private final HashMap<Activity, Boolean> activityMap = new HashMap<>();
-    private final Driver driver = new Driver();
-
-
-
-    public Browser type(String browserType) {
-        this.browserType = browserType;
-        return this;
+    public static BrowserConfig type(String browserType) {
+        browserConfig.get().type(browserType);
+        return browserConfig.get();
     }
 
-    public Browser type(BrowserTypes browserType) {
-        this.browserType = browserType.getBrowserName();
-        return this;
+    public static BrowserConfig type(BrowserTypes browserType) {
+        browserConfig.get().type(browserType);
+        return browserConfig.get();
     }
 
-    public Browser withWaitTime(Duration explicitWait) {
-        this.explicitWait = explicitWait;
-        return this;
+    public static BrowserConfig withWaitTime(Duration explicitWait) {
+        browserConfig.get().withWaitTime(explicitWait);
+        return browserConfig.get();
     }
 
-    public Browser pageBackGroundActivity(Activity activity, boolean enable){
-        activityMap.put(activity, enable);
-        return this;
+    public static BrowserConfig pageBackGroundActivity(Activity activity, boolean enable){
+        browserConfig.get().pageBackGroundActivity(activity, enable);
+        return browserConfig.get();
     }
 
-    public Browser withOptions(AbstractDriverOptions<?> options) {
-        this.options = options;
-        return this;
+    public static BrowserConfig withOptions(AbstractDriverOptions<?> options) {
+        browserConfig.get().withOptions(options);
+        return browserConfig.get();
     }
 
-    public void open(String url) {
-        if(explicitWait != null){
-            setWaitTime(WaitTime.DEFAULT_WAIT_TIME, String.valueOf(explicitWait.getSeconds()));
-        }
-
-        if(!activityMap.isEmpty()){
-            activityMap.forEach((k, v) -> addData(k.getActivityType(), String.valueOf(v)));
-        }
-        driver.create(browserType, options).navigateTo(url);
+    public static void open(String url) {
+        browserConfig.get().open(url);
     }
 
-    public void close() {
-        try {
-            driver.close();
-        } finally {
-            DataCleaner.cleanData();
-        }
+    public static void close() {
+        browserConfig.get().close();
     }
+
 }
 
 

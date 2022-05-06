@@ -17,19 +17,16 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MultiElementDataFinderTest {
 
-    private Browser browser;
-
     @Before
     public void initialize() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setHeadless(true);
-        browser = new Browser();
-        browser.withOptions(chromeOptions).open("https://google.co.nz");
+        Browser.withOptions(chromeOptions).open("https://google.co.nz");
     }
 
     @After
     public void terminate() {
-        browser.close();
+        Browser.close();
     }
 
 
@@ -53,10 +50,10 @@ public class MultiElementDataFinderTest {
     public void testFindAllShouldHave() {
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.setHeadless(true);
-//        Browser browser = new Browser();
-//        browser.withOptions(chromeOptions).open("https://google.co.nz");
+//        Browser 
+//        Browser.withOptions(chromeOptions).open("https://google.co.nz");
         findAll("name:q").shouldHave(size(1));
-//        browser.close();
+//        Browser.close();
     }
 
 //    public static void main(String[] args) {
