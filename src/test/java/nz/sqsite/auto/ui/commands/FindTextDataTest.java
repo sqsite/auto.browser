@@ -12,19 +12,17 @@ import static nz.sqsite.auto.ui.webelement.ElementFinder.find;
 
 public class FindTextDataTest {
 
-    private Browser browser;
-
     @Before
     public void initialize() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setHeadless(true);
-        browser = new Browser();
-        browser.withOptions(chromeOptions).open("file://" + Finder.findFilePath("components/elements/texttypes.html"));
+        
+        Browser.withOptions(chromeOptions).open("file://" + Finder.findFilePath("components/elements/texttypes.html"));
     }
 
     @After
     public void terminate() {
-        browser.close();
+        Browser.close();
     }
 
 

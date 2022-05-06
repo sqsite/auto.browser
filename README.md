@@ -17,11 +17,11 @@ You can download the dependency from maven
 ## Usage
 
 ``` java
-Browser browser = new Browser();
+Browser 
 browser.open("https:\\google.co.nz");
 find("name:q").sendKeys("hello");
 find("name:q").shouldHave(exactText("hello"));
-browser.close();
+Browser.close();
 ```
 
 ## Contributing

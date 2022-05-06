@@ -20,19 +20,17 @@ import static nz.sqsite.auto.ui.webelement.ElementFinder.findAll;
 
 public class TheFindAllTest {
 
-    private Browser browser;
-
     @Before
     public void initialize() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setHeadless(true);
-        browser = new Browser();
-        browser.withOptions(chromeOptions).open("file://" + Finder.findFilePath("components/elements/elements.html"));
+        
+        Browser.withOptions(chromeOptions).open("file://" + Finder.findFilePath("components/elements/elements.html"));
     }
 
     @After
     public void terminate() {
-        browser.close();
+        Browser.close();
     }
 
 

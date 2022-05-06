@@ -13,19 +13,18 @@ import static nz.sqsite.auto.ui.webelement.ElementFinder.find;
 
 public class ClickTest {
 
-    private Browser browser;
 
     @Before
     public void initialize() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setHeadless(true);
-        browser = new Browser();
-        browser.withOptions(chromeOptions).open("file://" + Finder.findFilePath("components/button/button.html"));
+        
+        Browser.withOptions(chromeOptions).open("file://" + Finder.findFilePath("components/button/button.html"));
     }
 
     @After
     public void terminate() {
-        browser.close();
+        Browser.close();
     }
 
     /*

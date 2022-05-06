@@ -12,19 +12,17 @@ import static nz.sqsite.auto.ui.webelement.ElementFinder.find;
 
 public class SelectParallelTest {
 
-    private Browser browser;
-
     @Before
     public void initialize() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setHeadless(true);
-        browser = new Browser();
-        browser.withOptions(chromeOptions).open("file://" + Finder.findFilePath("components/select/select.html"));
+        
+        Browser.withOptions(chromeOptions).open("file://" + Finder.findFilePath("components/select/select.html"));
     }
 
     @After
     public void terminate() {
-        browser.close();
+        Browser.close();
     }
 
     @Test

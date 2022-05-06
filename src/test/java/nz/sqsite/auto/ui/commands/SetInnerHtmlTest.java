@@ -15,21 +15,19 @@ import static nz.sqsite.auto.ui.webelement.ElementFinder.find;
 
 public class SetInnerHtmlTest {
 
-    private Browser browser;
-
     @Before
     public void initialize() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setHeadless(true);
-        browser = new Browser();
-        browser.withOptions(chromeOptions)
+        
+        Browser.withOptions(chromeOptions)
                 .withWaitTime(Duration.ofSeconds(7))
                 .open("file://" + Finder.findFilePath("components/textinput/textinput.html"));
     }
 
     @After
     public void terminate() {
-        browser.close();
+        Browser.close();
     }
 
     @Test

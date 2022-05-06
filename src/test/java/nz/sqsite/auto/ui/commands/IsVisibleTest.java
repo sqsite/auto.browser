@@ -6,25 +6,22 @@ import org.junit.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import static nz.sqsite.auto.ui.verification.expectations.Expectation.toBeInteractable;
-import static nz.sqsite.auto.ui.verification.expectations.Expectation.toBeInvisible;
 import static nz.sqsite.auto.ui.webelement.ElementFinder.find;
 import static nz.sqsite.auto.ui.webelement.ElementFinder.findAll;
 
 public class IsVisibleTest {
 
-    private Browser browser;
-
     @Before
     public void initialize() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setHeadless(true);
-        browser = new Browser();
-        browser.withOptions(chromeOptions).open("file://" + Finder.findFilePath("components/elements/elements.html"));
+        
+        Browser.withOptions(chromeOptions).open("file://" + Finder.findFilePath("components/elements/elements.html"));
     }
 
     @After
     public void terminate() {
-        browser.close();
+        Browser.close();
     }
 
     @Test @Ignore
