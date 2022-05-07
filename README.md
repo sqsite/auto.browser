@@ -10,7 +10,7 @@ You can download the dependency from maven
 <dependency>
    <groupId>io.github.sqsite</groupId>
    <artifactId>auto.browser</artifactId>
-   <version>0.0.1</version>
+   <version>0.0.3</version>
 </dependency>
 ```
 
