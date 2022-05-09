@@ -2,6 +2,9 @@
 
 Sqsite browser automation library is a Java based Selenium framework to automate complex UIs. The most impressive feature of this library is that you can forget about switching iFrames and handling spinners. The framework will do it automatically for you. It has got implicit auto-wait of 5 seconds and a lot of easy to use features that makes your life as an automation engineer very easy.
 
+### For detailed documentation visit
+[Sqsite Docs](https://sqsite.github.io)
+
 ## Downloads
 
 You can download the dependency from maven
