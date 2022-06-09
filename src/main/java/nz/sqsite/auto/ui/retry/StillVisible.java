@@ -20,7 +20,7 @@ public class StillVisible extends RetryCondition {
                 .withMultipleElements(isMultiple)
                 .isVisible(isVisible)
                 .usingLocator(locatorSet)
-                .invokeCommand(IsVisible.class, "isVisible"));
+                .invokeCommand(IsVisible.class));
 
         if (result) {
             ThreadSleep.forMilliS(500);
@@ -33,7 +33,7 @@ public class StillVisible extends RetryCondition {
                 .withMultipleElements(isMultiple)
                 .isVisible(isVisible)
                 .usingLocator(locatorSet)
-                .invokeCommand(IsVisible.class, "isVisible"));
+                .invokeCommand(IsVisible.class));
 
         return result;
     }

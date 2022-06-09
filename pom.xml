@@ -6,7 +6,7 @@
 
     <groupId>io.github.sqsite</groupId>
     <artifactId>auto.browser</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
 
     <name>Sqsite Browser Automation</name>
     <description>Java Based Browser Automation Library</description>
