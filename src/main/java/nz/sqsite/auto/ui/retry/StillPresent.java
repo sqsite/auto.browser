@@ -19,7 +19,7 @@ public class StillPresent extends RetryCondition {
                 .withMultipleElements(isMultiple)
                 .isVisible(isVisible)
                 .usingLocator(locatorSet)
-                .invokeCommand(GetSize.class, "getSize") == 0;
+                .invokeCommand(GetSize.class) == 0;
 
         if (!result) {
             ThreadSleep.forMilliS(500);
@@ -32,7 +32,7 @@ public class StillPresent extends RetryCondition {
                 .withMultipleElements(isMultiple)
                 .isVisible(isVisible)
                 .usingLocator(locatorSet)
-                .invokeCommand(GetSize.class, "getSize") == 0;
+                .invokeCommand(GetSize.class) == 0;
 
         return result;
     }

@@ -60,7 +60,7 @@ public class Page {
      */
     public static Alert switchToAlert() {
         WebDriverWait wait = Wait.getWait();
-        wait.until(w -> ExpectedConditions.alertIsPresent());
+        wait.until(ExpectedConditions.alertIsPresent());
         return Driver.getDriver().switchTo().alert();
     }
 

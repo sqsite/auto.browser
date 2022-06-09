@@ -70,6 +70,8 @@ public interface UIElement {
 
     void rightClick();
 
+    void contextClick();
+
     void actionClick();
 
     void forceClick();

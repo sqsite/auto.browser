@@ -372,6 +372,14 @@ public class UIActions implements UIElement {
     }
 
     /**
+     * Simulates a right click or context click by the user. Since right click normally takes the user to a different screen the method is final
+     */
+    @Override
+    public void contextClick() {
+        executor.usingLocator(locators).invokeCommand(RightClick.class);
+    }
+
+    /**
      * Similar to click by selenium actions. This action is final.
      */
     @Override

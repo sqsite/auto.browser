@@ -26,7 +26,7 @@ public class NotPresent extends RetryCondition {
                 .withMultipleElements(isMultiple)
                 .isVisible(isVisible)
                 .usingLocator(newElementLocatorSet)
-                .invokeCommand(GetSize.class, "getSize") > 0;
+                .invokeCommand(GetSize.class) > 0;
 
         if (!result) {
             ThreadSleep.forMilliS(500);
@@ -39,7 +39,7 @@ public class NotPresent extends RetryCondition {
                 .withMultipleElements(isMultiple)
                 .isVisible(isVisible)
                 .usingLocator(newElementLocatorSet)
-                .invokeCommand(GetSize.class, "getSize") > 0;
+                .invokeCommand(GetSize.class) > 0;
 
         return result;
     }
